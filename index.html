@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hout Totaaladvies Soundboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #f4f4f4;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      text-align: left;
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 6px;
+      color: #444;
+      max-width: 400px;
+    }
+
+    .subtitle.en {
+      font-style: italic;
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    .category {
+      width: 100%;
+      max-width: 380px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      padding: 16px;
+    }
+
+    .category h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #555;
+      font-size: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button {
+      flex: 1;
+      min-width: 90px;
+      background-color: #ececec;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    /* Category colors */
+    .beton button { background-color: #d6d6d6; }
+    .traditioneel-hout button { background-color: #d2a679; }
+    .hout-totaaladvies button { background-color: hsl(358, 72%, 48%); color: white; }
+
+    button:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hout Totaaladvies Soundboard</h1>
+  <p class="subtitle">
+    Met de koptelefoon kunt u horen hoe buren een bijeenkomst hebben, een wasmachine in de ruimte naast u draait, en buren op de verdieping boven u lopen.  
+    1. in een betonnen gebouw  2. in een traditioneel houten gebouw  3. in een Hout Totaaladvies houten gebouw.
+  </p>
+  <p class="subtitle en">
+    By using the headphones, you can hear neighbors having a gathering, a washing machine working next door, and neighbors walking upstairs.  
+    1. in a concrete building  2. in a traditional timber building  3. in a Hout Totaaladvies timber building.
+  </p>
+
+  <!-- Beton -->
+  <div class="category beton">
+    <h2>Beton</h2>
+    <div class="buttons">
+      <button onclick="playSound('feest_beton')">Party</button>
+      <button onclick="playSound('wasmachine_beton')">Wasmachine</button>
+      <button onclick="playSound('voetstappen_beton')">Lopen</button>
+    </div>
+  </div>
+
+  <!-- Traditionele houtbouw -->
+  <div class="category traditioneel-hout">
+    <h2>Traditionele houtbouw</h2>
+    <div class="buttons">
+      <button onclick="playSound('party_hout')">Party</button>
+      <button onclick="playSound('wasmachine_hout')">Wasmachine</button>
+      <button onclick="playSound('voetstappen_hout')">Lopen</button>
+    </div>
+  </div>
+
+  <!-- Hout Totaaladvies houtbouw -->
+  <div class="category hout-totaaladvies">
+    <h2>Hout Totaaladvies houtbouw</h2>
+    <div class="buttons">
+      <button onclick="playSound('feest_HTA')">Party</button>
+      <button onclick="playSound('wasmachine_HTA')">Wasmachine</button>
+      <button onclick="playSound('voetstappen_HTA')">Lopen</button>
+    </div>
+  </div>
+
+  <!-- Audio files -->
+  <audio id="feest_beton" src="./feest_beton.wav" preload="auto"></audio>
+  <audio id="wasmachine_beton" src="./wasmachine_beton.wav" preload="auto"></audio>
+  <audio id="voetstappen_beton" src="./voetstappen_beton.wav" preload="auto"></audio>
+
+  <audio id="party_hout" src="./party_hout.wav" preload="auto"></audio>
+  <audio id="wasmachine_hout" src="./wasmachine_hout.wav" preload="auto"></audio>
+  <audio id="voetstappen_hout" src="./voetstappen_hout.wav" preload="auto"></audio>
+
+  <audio id="feest_HTA" src="./feest_HTA.wav" preload="auto"></audio>
+  <audio id="wasmachine_HTA" src="./wasmachine_HTA.wav" preload="auto"></audio>
+  <audio id="voetstappen_HTA" src="./voetstappen_HTA.wav" preload="auto"></audio>
+
+  <script>
+    let currentAudio = null;
+
+    function playSound(id) {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+
+      const audio = document.getElementById(id);
+      if (audio) {
+        currentAudio = audio;
+        audio.play().catch(err => console.log("Playback failed:", err));
+      } else {
+        console.error("Audio not found:", id);
+      }
+    }
+  </script>
+
+</body>
+</html>
