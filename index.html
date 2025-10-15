@@ -2,82 +2,105 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Hout Totaaladvies Soundboard</title>
   <style>
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background-color: #f4f4f4;
+      background-color: #221f1f;
       color: #222;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
       min-height: 100vh;
-      padding: 24px;
+      padding: 12px;
+      box-sizing: border-box;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 10px;
-      font-size: 28px;
+      margin: 10px 0;
+      font-size: 22px;
+      line-height: 1.2;
+      color: #FFFFFF;
+    }
+
+    .info-section {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      width: 100%;
+    }
+
+    .info-section .text-block {
+      max-width: 320px;
     }
 
     .subtitle {
       text-align: left;
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 6px;
-      color: #444;
-      max-width: 400px;
+      font-size: 10px;
+      line-height: 1.4;
+      margin-bottom: 4px;
+      color: #FFFFFF;
     }
 
     .subtitle.en {
       font-style: italic;
-      font-size: 14px;
-      margin-bottom: 20px;
-      color: #666;
+      color: #FFFFFF;
+      margin-bottom: 10px;
     }
 
+    .info-section .qr img {
+      width: 70px;
+      height: 70px;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+
+    /* Category containers */
     .category {
       width: 100%;
-      max-width: 380px;
+      max-width: 300px;
       background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-      padding: 16px;
+      border-radius: 14px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      margin-bottom: 14px;
+      padding: 12px;
     }
 
     .category h2 {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #555;
-      font-size: 18px;
+      font-size: 14px;
     }
 
     .buttons {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     button {
       flex: 1;
-      min-width: 90px;
+      min-width: 80px;
       background-color: #ececec;
       border: none;
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 15px;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 13px;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s;
     }
 
     button:active {
-      transform: scale(0.95);
+      transform: scale(0.96);
     }
 
     /* Category colors */
@@ -88,49 +111,80 @@
     button:hover {
       opacity: 0.85;
     }
+
+
+
+    /* Mobile responsiveness */
+    @media (max-height: 700px) {
+      body {
+        padding: 8px;
+      }
+      .category {
+        margin-bottom: 10px;
+      }
+      .buttons button {
+        padding: 8px;
+        font-size: 12px;
+      }
+      .info-section .qr img {
+        width: 60px;
+        height: 60px;
+      }
+      .logos img {
+        height: 25px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>Hout Totaaladvies Soundboard</h1>
-  <p class="subtitle">
-    Met de koptelefoon kunt u horen hoe buren een bijeenkomst hebben, een wasmachine in de ruimte naast u draait, en buren op de verdieping boven u lopen.  
-    1. in een betonnen gebouw  2. in een traditioneel houten gebouw  3. in een Hout Totaaladvies houten gebouw.
-  </p>
-  <p class="subtitle en">
-    By using the headphones, you can hear neighbors having a gathering, a washing machine working next door, and neighbors walking upstairs.  
-    1. in a concrete building  2. in a traditional timber building  3. in a Hout Totaaladvies timber building.
-  </p>
 
-  <!-- Beton -->
+  <div class="info-section">
+    <div class="text-block">
+      <p class="subtitle">
+        Met de koptelefoon kunt u horen hoe buren een bijeenkomst hebben, een wasmachine in de ruimte naast u draait, en buren op de verdieping boven u lopen.  
+        1. in een betonnen gebouw  2. in een traditioneel houten gebouw  3. in een Hout Totaaladvies houten gebouw.
+      </p>
+      <p class="subtitle en">
+        By using the headphones, you can hear neighbors having a gathering, a washing machine working next door, and neighbors walking upstairs.  
+        1. in a concrete building  2. in a traditional timber building  3. in a Hout Totaaladvies timber building.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Betonnen gebouw -->
   <div class="category beton">
-    <h2>Beton</h2>
+    <h2>Betonnen gebouw</h2>
     <div class="buttons">
-      <button onclick="playSound('feest_beton')">Party</button>
+      <button onclick="playSound('feest_beton')">Feest</button>
       <button onclick="playSound('wasmachine_beton')">Wasmachine</button>
       <button onclick="playSound('voetstappen_beton')">Lopen</button>
     </div>
   </div>
 
-  <!-- Traditionele houtbouw -->
+  <!-- Traditioneel houten gebouw -->
   <div class="category traditioneel-hout">
-    <h2>Traditionele houtbouw</h2>
+    <h2>Traditioneel houten gebouw</h2>
     <div class="buttons">
-      <button onclick="playSound('party_hout')">Party</button>
+      <button onclick="playSound('party_hout')">Feest</button>
       <button onclick="playSound('wasmachine_hout')">Wasmachine</button>
       <button onclick="playSound('voetstappen_hout')">Lopen</button>
     </div>
   </div>
 
-  <!-- Hout Totaaladvies houtbouw -->
+  <!-- Hout Totaaladvies houten gebouw -->
   <div class="category hout-totaaladvies">
-    <h2>Hout Totaaladvies houtbouw</h2>
+    <h2>Hout Totaaladvies houten gebouw</h2>
     <div class="buttons">
-      <button onclick="playSound('feest_HTA')">Party</button>
+      <button onclick="playSound('feest_HTA')">Feest</button>
       <button onclick="playSound('wasmachine_HTA')">Wasmachine</button>
       <button onclick="playSound('voetstappen_HTA')">Lopen</button>
     </div>
   </div>
+
+
 
   <!-- Audio files -->
   <audio id="feest_beton" src="./feest_beton.wav" preload="auto"></audio>
