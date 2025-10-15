@@ -44,7 +44,7 @@
 
     .subtitle {
       text-align: left;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.4;
       margin-bottom: 4px;
       color: #FFFFFF;
@@ -95,13 +95,32 @@
       border: none;
       border-radius: 10px;
       padding: 10px;
-      font-size: 13px;
+      font-size: 14px;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s;
     }
 
     button:active {
       transform: scale(0.96);
+    }
+
+    .stop-btn-floating {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: transparent; /* optional if your icon has its own style */
+      border: none;
+      cursor: pointer;
+      width: 60px;   /* button size */
+      height: 60px;
+      padding: 0;
+      z-index: 999;
+    }
+
+    .stop-btn-floating img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* keeps proportions */
     }
 
     /* Category colors */
@@ -185,7 +204,9 @@
     </div>
   </div>
 
-
+  <button onclick="stopAllSounds()" class="stop-btn-floating">
+    <img src="stop-icon.png" alt="Stop" />
+  </button>
 
   <!-- Audio files -->
   <audio id="feest_beton" src="./feest_beton.wav" preload="auto"></audio>
@@ -215,6 +236,14 @@
         audio.play().catch(err => console.log("Playback failed:", err));
       } else {
         console.error("Audio not found:", id);
+      }
+    }
+
+    function stopAllSounds() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
       }
     }
   </script>
