@@ -5,103 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Hout Totaaladvies Soundboard</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: "Poppins", sans-serif;
-      background-color: #221f1f;
-      color: #222;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      font-family: sans-serif;
+      background: #231f20;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: flex-start;
-      min-height: 100vh;
-      padding: 12px;
-      box-sizing: border-box;
+      align-items: center;
     }
 
     h1 {
       text-align: center;
-      margin-top: 80px; 
-      margin-bottom: 40px;
+      margin-top: 40px;
+      margin-bottom: 30px;
       font-size: 22px;
       line-height: 1.2;
       color: #FFFFFF;
     }
 
-    .info-section {
+    /* Horizontal layout for categories */
+    .categories {
       display: flex;
-      align-items: flex-start;
+      flex-direction: row;
       justify-content: center;
-      gap: 12px;
+      align-items: flex-start;
+      gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 16px;
       width: 100%;
+      max-width: 900px;
     }
 
-    .info-section .text-block {
-      max-width: 320px;
-    }
-
-    .subtitle {
-      text-align: left;
-      font-size: 16px;
-      line-height: 1.4;
-      margin-bottom: 4px;
-      color: #FFFFFF;
-    }
-
-    .subtitle.en {
-      font-style: italic;
-      color: #FFFFFF;
-      margin-bottom: 10px;
-    }
-
-    .info-section .qr img {
-      width: 70px;
-      height: 70px;
-      border-radius: 6px;
-      object-fit: contain;
-    }
-
-    /* Category containers */
     .category {
-      width: 100%;
-      max-width: 800px;
-      height: 100px;
+      width: 250px;
       background: white;
       border-radius: 14px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      margin-bottom: 25px;
-      padding: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    
+
     .category h1 {
       text-align: center;
-      margin-top: 4px;    /* reduced top margin */
-      margin-bottom: 6px; /* optional, keep spacing below buttons */
+      margin: 10px 0;
       color: #555;
       font-size: 16px;
     }
 
+    /* Buttons stacked vertically */
     .buttons {
       display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 8px;
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
     }
 
     button {
-      flex: 1;
-      min-width: 80px;
-      height: 50px;
+      width: 100%;
+      height: 45px;
       background-color: #ececec;
       border: none;
       border-radius: 10px;
-      padding: 8px;
       font-size: 14px;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s;
-      margin-top: 10px;
     }
 
     button:active {
@@ -112,10 +85,10 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: transparent; /* optional if your icon has its own style */
+      background-color: transparent;
       border: none;
       cursor: pointer;
-      width: 60px;   /* button size */
+      width: 60px;
       height: 60px;
       padding: 0;
       z-index: 999;
@@ -124,7 +97,7 @@
     .stop-btn-floating img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* keeps proportions */
+      object-fit: contain;
     }
 
     /* Category colors */
@@ -136,62 +109,50 @@
       opacity: 0.85;
     }
 
-
-
-    /* Mobile responsiveness */
-    @media (max-height: 700px) {
-      body {
-        padding: 8px;
+    @media (max-width: 768px) {
+      .categories {
+        flex-direction: column;
+        align-items: center;
       }
       .category {
-        margin-bottom: 10px;
+        width: 80%;
       }
-      .buttons button {
-        padding: 8px;
-        font-size: 12px;
-      }
-      .info-section .qr img {
-        width: 60px;
-        height: 60px;
-      }
-      .logos img {
-        height: 25px;
-      }
+    }
+
+    @page {
+      size: landscape;
     }
   </style>
 </head>
 <body>
-
   <h1>Hout Totaaladvies Soundboard</h1>
 
-
-  <!-- Betonnen gebouw -->
-  <div class="category beton">
-    <h1>Betonnen gebouw</h1>
-    <div class="buttons">
-      <button onclick="playSound('feest_beton')">Feest</button>
-      <button onclick="playSound('wasmachine_beton')">Wasmachine</button>
-      <button onclick="playSound('voetstappen_beton')">Lopen</button>
+  <div class="categories">
+    <div class="category beton">
+      <h1>Betonnen gebouw</h1>
+      <div class="buttons">
+        <button onclick="playSound('feest_beton')">Feest</button>
+        <button onclick="playSound('wasmachine_beton')">Wasmachine</button>
+        <button onclick="playSound('voetstappen_beton')">Lopen</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Traditioneel houten gebouw -->
-  <div class="category traditioneel-hout">
-    <h1>Traditioneel houten gebouw</h1>
-    <div class="buttons">
-      <button onclick="playSound('party_hout')">Feest</button>
-      <button onclick="playSound('wasmachine_hout')">Wasmachine</button>
-      <button onclick="playSound('voetstappen_hout')">Lopen</button>
+    <div class="category traditioneel-hout">
+      <h1>Traditioneel houten gebouw</h1>
+      <div class="buttons">
+        <button onclick="playSound('party_hout')">Feest</button>
+        <button onclick="playSound('wasmachine_hout')">Wasmachine</button>
+        <button onclick="playSound('voetstappen_hout')">Lopen</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Hout Totaaladvies houten gebouw -->
-  <div class="category hout-totaaladvies">
-    <h1>Matchbox gebouw</h1>
-    <div class="buttons">
-      <button onclick="playSound('feest_HTA')">Feest</button>
-      <button onclick="playSound('wasmachine_HTA')">Wasmachine</button>
-      <button onclick="playSound('voetstappen_HTA')">Lopen</button>
+    <div class="category hout-totaaladvies">
+      <h1>Matchbox gebouw</h1>
+      <div class="buttons">
+        <button onclick="playSound('feest_HTA')">Feest</button>
+        <button onclick="playSound('wasmachine_HTA')">Wasmachine</button>
+        <button onclick="playSound('voetstappen_HTA')">Lopen</button>
+      </div>
     </div>
   </div>
 
@@ -225,8 +186,6 @@
       if (audio) {
         currentAudio = audio;
         audio.play().catch(err => console.log("Playback failed:", err));
-      } else {
-        console.error("Audio not found:", id);
       }
     }
 
@@ -238,6 +197,5 @@
       }
     }
   </script>
-
 </body>
 </html>
