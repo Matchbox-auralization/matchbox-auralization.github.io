@@ -38,11 +38,15 @@
       flex-wrap: wrap;
       width: 100%;
       max-width: 2040px;
+      /* allow horizontal scrolling if needed (landscape small screens) */
+      overflow-x: visible;
+      box-sizing: border-box;
+      padding: 0 12px;
     }
 
     .category {
       width: 20%;
-      height: 200px;
+      height: 220px;
       background: white;
       border-radius: 14px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
@@ -50,6 +54,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      box-sizing: border-box;
     }
 
     .category h1 {
@@ -110,17 +115,47 @@
       opacity: 0.85;
     }
 
-    @media (max-width: 768px) {
+    /* Portrait: stack vertically (phones in portrait) */
+    @media (orientation: portrait) and (max-width: 1024px) {
       .categories {
         flex-direction: column;
         align-items: center;
+        overflow-x: hidden;
       }
       .category {
         width: 80%;
       }
     }
 
+    /* Landscape: force single row — don't wrap; each category takes 1/3 of available width */
+    @media (orientation: landscape) {
+      .categories {
+        flex-wrap: nowrap;            /* prevent wrapping to next row */
+        overflow-x: auto;            /* allow horizontal scroll if absolutely necessary */
+        -webkit-overflow-scrolling: touch;
+        justify-content: space-between;
+      }
+      /* compute each card width so 3 fit side-by-side with gap considered */
+      .category {
+        flex: 0 0 calc((100% - 40px) / 3); /* 40px = gap * (number_of_gaps = 2) */
+        max-width: calc((100% - 40px) / 3);
+      }
+    }
 
+    /* Extra safety for very narrow devices in landscape */
+    @media (orientation: landscape) and (max-width: 600px) {
+      .categories {
+        gap: 12px;
+      }
+      .category {
+        flex: 0 0 calc((100% - 24px) / 3);
+        max-width: calc((100% - 24px) / 3);
+      }
+      button {
+        height: 40px;
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
 <body>
