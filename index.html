@@ -22,7 +22,7 @@
     h1 {
       text-align: center;
       margin-top: 80px; 
-      margin-bottom: 10px;
+      margin-bottom: 40px;
       font-size: 22px;
       line-height: 1.2;
       color: #FFFFFF;
@@ -67,19 +67,20 @@
     .category {
       width: 100%;
       max-width: 300px;
+      height: 100px;
       background: white;
       border-radius: 14px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      margin-bottom: 14px;
+      margin-bottom: 25px;
       padding: 8px;
     }
-
-    .category h2 {
+    
+    .category h1 {
       text-align: center;
       margin-top: 4px;    /* reduced top margin */
       margin-bottom: 6px; /* optional, keep spacing below buttons */
       color: #555;
-      font-size: 14px;
+      font-size: 16px;
     }
 
     .buttons {
@@ -92,13 +93,15 @@
     button {
       flex: 1;
       min-width: 80px;
+      height: 50px;
       background-color: #ececec;
       border: none;
       border-radius: 10px;
-      padding: 10px;
+      padding: 8px;
       font-size: 14px;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s;
+      margin-top: 10px;
     }
 
     button:active {
@@ -161,23 +164,10 @@
 
   <h1>Hout Totaaladvies Soundboard</h1>
 
-  <div class="info-section">
-    <div class="text-block">
-      <p class="subtitle">
-        Met de koptelefoon kunt u horen hoe buren een bijeenkomst hebben, een wasmachine in de ruimte naast u draait, en buren op de verdieping boven u lopen.  
-        1. in een betonnen gebouw  2. in een traditioneel houten gebouw  3. in een Hout Totaaladvies houten gebouw.
-      </p>
-      <p class="subtitle en">
-        By using the headphones, you can hear neighbors having a gathering, a washing machine working next door, and neighbors walking upstairs.  
-        1. in a concrete building  2. in a traditional timber building  3. in a Hout Totaaladvies timber building.
-      </p>
-    </div>
-
-  </div>
 
   <!-- Betonnen gebouw -->
   <div class="category beton">
-    <h2>Betonnen gebouw</h2>
+    <h1>Betonnen gebouw</h1>
     <div class="buttons">
       <button onclick="playSound('feest_beton')">Feest</button>
       <button onclick="playSound('wasmachine_beton')">Wasmachine</button>
@@ -187,7 +177,7 @@
 
   <!-- Traditioneel houten gebouw -->
   <div class="category traditioneel-hout">
-    <h2>Traditioneel houten gebouw</h2>
+    <h1>Traditioneel houten gebouw</h1>
     <div class="buttons">
       <button onclick="playSound('party_hout')">Feest</button>
       <button onclick="playSound('wasmachine_hout')">Wasmachine</button>
@@ -197,7 +187,7 @@
 
   <!-- Hout Totaaladvies houten gebouw -->
   <div class="category hout-totaaladvies">
-    <h2>Hout Totaaladvies houten gebouw</h2>
+    <h1>Matchbox gebouw</h1>
     <div class="buttons">
       <button onclick="playSound('feest_HTA')">Feest</button>
       <button onclick="playSound('wasmachine_HTA')">Wasmachine</button>
